@@ -18,7 +18,7 @@ module.exports.displayGameList = async (req, res, next)=>{
 
 module.exports.displayAddPage = async (req, res, next)=>{
     try {
-        res.render('game/add', {title: 'Games'})
+        res.render('game/add', {title: 'Add Game'})
     } catch (err){
         console.log(err);
     }
