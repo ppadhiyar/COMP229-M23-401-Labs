@@ -8,24 +8,13 @@ let jwt = require('jsonwebtoken');
 let Book = require('../models/book');
 
 module.exports.displayBookList = (req, res, next) => {
-    Book.find((err, bookList) => {
-        if(err)
-        {
-            return console.error(err);
-        }
-        else
-        {
-            //console.log(BookList);
-
-            /*
-            res.render('book/list', 
-            {title: 'Books', 
-            BookList: bookList, 
-            displayName: req.user ? req.user.displayName : ''});      
-            */
-
-            res.json(bookList);
-        }
+    Book.find()
+    .then(bookList => {
+        res.json(bookList);
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).send(err);
     });
 }
 
